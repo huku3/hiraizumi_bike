@@ -37,7 +37,7 @@ Route::resource('customers', CustomerController::class)
     ->middleware('auth');
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create']);
+    ->only(['create','store']);
 
 Route::get('/guidance',function () {
     return view('customers.guidance');
