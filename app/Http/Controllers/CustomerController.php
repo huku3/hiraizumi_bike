@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreCustomerRequest;
+use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 
@@ -17,7 +19,9 @@ class CustomerController extends Controller
 
     public function index()
     {
-        return view('customers.index');
+        $customers = Customer::all();
+        return view('customers.index', compact('customers'));
+        
     }
 
     /**
@@ -31,9 +35,11 @@ class CustomerController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCustomerRequest $request)
     {
-        //
+        $customer = new Customer($request->all());
+        $customer->save();
+        return view('customers.show',compact('customer'));
     }
 
     /**
@@ -41,7 +47,8 @@ class CustomerController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customers.show',compact('customer'));
     }
 
     /**
@@ -55,7 +62,7 @@ class CustomerController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateCustomerRequest $request, string $id)
     {
         //
     }

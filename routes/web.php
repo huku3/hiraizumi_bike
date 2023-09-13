@@ -33,13 +33,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create', 'store', 'edit', 'update', 'destroy'])
+    ->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create','store']);
+    ->only(['create', 'store']);
 
-Route::get('/guidance',function () {
+Route::get('/guidance', function () {
     return view('customers.guidance');
 });
 
