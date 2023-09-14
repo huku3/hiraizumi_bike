@@ -46,7 +46,7 @@
                         <!-- Authentication -->
                         @auth
                             <x-dropdown-link :href="route('customers.create')">
-                                {{ __('Customer Post') }}
+                                {{ __('Customer Create') }}
                             </x-dropdown-link>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf

@@ -22,16 +22,22 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unit_count' => 'required|integer|max:50',
-            'start_time' => 'required|integer',
+            'unit_count' => 'required|string|max:5',
+            'start_time' => 'required|string',
             'name' => 'required|string|max:50',
             'name_kana' => 'required|string|max:50',
-            'post_code' => 'required|string|max:8',
+            'post_code' => 'required|string|max:50',
             'address_1' => 'required|string|max:50',
             'address_2' => 'required|string|max:50',
             'address_3' => 'required|string|max:50',
             'tel_number' => 'required|string|max:20',
             'email' => 'required|string|max:50',
+        ];
+    }
+    public function attributes()
+    {
+        return [
+            'name' => '代表者氏名',
         ];
     }
 }

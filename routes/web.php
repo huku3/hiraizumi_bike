@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [CustomerController::class, 'index'])
-    ->name('root');
+    ->name('root')
+    ->middleware('auth');
 
 
 Route::get('/dashboard', function () {
@@ -33,7 +34,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
 Route::resource('customers', CustomerController::class)

@@ -22,8 +22,8 @@ class UpdateCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'unit_count' => 'required|integer|max:50',
-            'start_time' => 'required|integer',
+            'unit_count' => 'required|integer|max:10',
+            'start_time' => 'required|string',
             'name' => 'required|string|max:50',
             'name_kana' => 'required|string|max:50',
             'post_code' => 'required|string|max:8',

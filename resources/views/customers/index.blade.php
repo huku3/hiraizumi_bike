@@ -1,4 +1,5 @@
 <x-app-layout>
+<h1>受付一覧</h1>
     <div class="container max-w-7xl mx-auto px-4 md:px-12 pb-3 mt-3">
         <div class="flex flex-wrap -mx-1 lg:-mx-4 mb-4">
             @foreach ($customers as $customer)

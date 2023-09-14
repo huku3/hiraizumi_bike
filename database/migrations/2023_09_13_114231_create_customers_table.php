@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->integer('unit_count');
+            $table->string('unit_count');
             $table->string('start_time');
             $table->string('name');
             $table->string('name_kana');
