@@ -38,10 +38,15 @@ Route::resource('customers', CustomerController::class)
     ->middleware('auth');
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create', 'store']);
+    ->only(['create', 'store','']);
 
-Route::get('/guidance', function () {
-    return view('customers.guidance');
+Route::get('/info', function () {
+    return view('customers.info');
 });
+
+Route::get('/apply', [CustomerController::class,'apply']);
+    // return view('customers.apply');
+
+Route::post('/form', [CustomerController::class,'form']);
 
 require __DIR__ . '/auth.php';

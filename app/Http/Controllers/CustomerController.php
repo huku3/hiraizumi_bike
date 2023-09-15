@@ -12,10 +12,18 @@ class CustomerController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function guidance()
+    public function apply()
     {
-        //
+        return view('customers.apply');
     }
+
+    public function form(StoreCustomerRequest $request)
+    {
+        $customer = new Customer($request->all());
+        $customer->save();
+        return view('customers.thank_you',compact('customer'));
+    }
+
 
     public function index()
     {
