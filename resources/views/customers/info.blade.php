@@ -62,6 +62,7 @@
         <p class="mb-4">当サービスでは待ち時間も少なく、快適なサイクリングをお楽しみいただけます。</p>
         <p class="mb-4">以下のフォームに必要事項を入力して、自転車のレンタルを申し込んでください。</p>
         <form action="/apply" method="post">
+        @csrf
             <input type="submit" value="受付する"
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
         </form>

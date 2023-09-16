@@ -15,9 +15,10 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('customers.store') }}" method="POST" enctype="multipart/form-data"
+        <form action="{{ route('customers.update', $customer) }}" method="POST" enctype="multipart/form-data"
             class="rounded pt-3 pb-8 mb-4">
             @csrf
+            @method('PUT')
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="unit_count">
                     利用台数（一度の申込で最大5台までレンタル可能です）
@@ -37,7 +38,7 @@
                 </label>
                 <input type="time" name="start_time"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="利用時間" value="{{ old('start_time') }}">
+                    placeholder="利用時間" value="{{ old('start_time', $customer->start_time) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="name">
@@ -45,7 +46,7 @@
                 </label>
                 <input type="text" name="name"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例平泉 太郎" value="{{ old('name') }}">
+                    placeholder="例平泉 太郎" value="{{ old('name', $customer->name) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="name_kana">
@@ -53,7 +54,7 @@
                 </label>
                 <input type="text" name="name_kana"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例ヒライズミ タロウ" value="{{ old('name_kana') }}">
+                    placeholder="例ヒライズミ タロウ" value="{{ old('name_kana', $customer->name_kana) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="tel_number">
@@ -61,7 +62,7 @@
                 </label>
                 <input type="tel" name="tel_number"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="090-xxxx-xxxx" value="{{ old('tel_number') }}">
+                    placeholder="090-xxxx-xxxx" value="{{ old('tel_number', $customer->tel_number) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="email">
@@ -69,7 +70,7 @@
                 </label>
                 <input type="email" name="email"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例xxxxxx@yyyy.co.jp" value="{{ old('email') }}">
+                    placeholder="例xxxxxx@yyyy.co.jp" value="{{ old('email', $customer->email) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="post_code">
@@ -77,7 +78,7 @@
                 </label>
                 <input type="text" id="post_code" name="post_code"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="郵便番号" value="{{ old('post_code') }}">
+                    required placeholder="郵便番号" value="{{ old('post_code', $customer->post_code) }}">
                 <button id="lookupButton">郵便番号検索</button>
             </div>
             <div class="mb-4">
@@ -86,7 +87,7 @@
                 </label>
                 <input type="text" id="address_1" name="address_1"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="都道府県" value="{{ old('address_1') }}">
+                    required placeholder="都道府県" value="{{ old('address_1', $customer->address_1) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="address_2">
@@ -94,7 +95,7 @@
                 </label>
                 <input type="text" id="address_2" name="address_2"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="市町村" value="{{ old('address_2') }}">
+                    required placeholder="市町村" value="{{ old('address_2', $customer->address_2) }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="address_3">
@@ -102,7 +103,7 @@
                 </label>
                 <input type="text" id="address_3" name="address_3"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    required placeholder="xxx番地yyy号zzzマンション2F" value="{{ old('address_3') }}">
+                    required placeholder="xxx番地yyy号zzzマンション2F" value="{{ old('address_3', $customer->address_3) }}">
             </div>
             <script>
                 $(document).ready(function() {
@@ -127,7 +128,7 @@
                     });
                 });
             </script>
-            <input type="submit" value="申し込む"
+            <input type="submit" value="更新する"
                 class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
         </form>
     </div>

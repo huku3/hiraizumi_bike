@@ -21,7 +21,7 @@ class CustomerController extends Controller
     {
         $customer = new Customer($request->all());
         $customer->save();
-        return view('customers.thank_you',compact('customer'));
+        return view('customers.thank_you', compact('customer'));
     }
 
 
@@ -29,7 +29,6 @@ class CustomerController extends Controller
     {
         $customers = Customer::latest()->get();
         return view('customers.index', compact('customers'));
-        
     }
 
     /**
@@ -47,7 +46,7 @@ class CustomerController extends Controller
     {
         $customer = new Customer($request->all());
         $customer->save();
-        return view('customers.show',compact('customer'));
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -56,7 +55,7 @@ class CustomerController extends Controller
     public function show(string $id)
     {
         $customer = Customer::find($id);
-        return view('customers.show',compact('customer'));
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -64,7 +63,8 @@ class CustomerController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        return view('customers.edit', compact('customer'));
     }
 
     /**
@@ -72,7 +72,10 @@ class CustomerController extends Controller
      */
     public function update(UpdateCustomerRequest $request, string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->fill($request->all());
+        $customer->save();
+        return redirect('/');
     }
 
     /**
@@ -80,6 +83,9 @@ class CustomerController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $customer = Customer::find($id);
+        $customer->delete();
+        return redirect()->route('customers.index')
+            ->with('notice', '削除しました');
     }
 }

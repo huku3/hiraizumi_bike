@@ -44,7 +44,8 @@ Route::get('/info', function () {
     return view('customers.info');
 });
 
-Route::get('/apply', [CustomerController::class,'apply']);
+
+Route::post('/apply', [CustomerController::class,'apply']);
     // return view('customers.apply');
 
 Route::post('/form', [CustomerController::class,'form']);
