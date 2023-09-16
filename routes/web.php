@@ -50,4 +50,12 @@ Route::post('/apply', [CustomerController::class,'apply']);
 
 Route::post('/form', [CustomerController::class,'form']);
 
+Route::resource('customers.rentals',RentalController::class)
+    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->middleware('auth');
+
+Route::resource('bikes.rentals',RentalController::class)
+    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->middleware('auth');
+
 require __DIR__ . '/auth.php';

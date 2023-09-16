@@ -22,7 +22,7 @@ class Customer extends Model
         'email',
     ];
 
-    public function rental()
+    public function rentals()
     {
         return $this->hasMany(Rental::class);
     }

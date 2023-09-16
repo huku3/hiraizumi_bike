@@ -10,6 +10,11 @@
                         <th class="px-4 py-2">利用開始予定時間</th>
                         <th class="px-4 py-2">利用希望台数</th>
                         <th class="px-4 py-2">登録日時</th>
+                        <th class="px-4 py-2">レンタルコース</th>
+                        <th class="px-4 py-2">予定料金</th>
+                        <th class="px-4 py-2">ステータス</th>
+
+
                     </tr>
                 </thead>
                 <tbody>

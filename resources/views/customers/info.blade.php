@@ -48,19 +48,21 @@
 
     <section class="bg-black bg-opacity-70 text-white py-8 px-4 md:px-24 mb-4 rounded-lg">
         <h2 class="text-2xl font-semibold mb-4">レンタル案内</h2>
-        <p class="mb-4">料金</p>
+        <p class="mb-4">料金:</p>
         <ul class="list-disc list-inside ml-4">
             <li>一般サイクル: 4時間 500円、1時間増すごとに 200円、1日 900円</li>
             <li>電動サイクル: 4時間 600円、1時間増すごとに 200円、1日 1,200円</li>
         </ul>
         <p class="mt-4">営業時間: 9:00～16:00 (4月1日～11月末の営業)</p>
-        <p class="mt-4">住所: 岩手県西磐井郡平泉町平泉駅構内 TEL: 0191-46-5086</p>
+        <p class="mt-4">住所: 〒029-4102 岩手県西磐井郡平泉町平泉駅構内 TEL: 0191-46-5086</p>
+        <p class="mt-4">TEL: 0191-46-5086</p>
     </section>
 
     <section class="bg-black bg-opacity-70 text-white py-8 px-4 md:px-24 mb-4 rounded-lg">
         <h2 class="text-2xl font-semibold mb-4">スマホで簡単に受付</h2>
         <p class="mb-4">当サービスでは待ち時間も少なく、快適なサイクリングをお楽しみいただけます。</p>
         <p class="mb-4">以下のフォームに必要事項を入力して、自転車のレンタルを申し込んでください。</p>
+        <p class="mb-4">この受付は当日のみ有効です。</p>
         <form action="/apply" method="post">
         @csrf
             <input type="submit" value="受付する"
