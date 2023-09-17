@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Customer;
+use App\Models\Bike;
 
 class RentalController extends Controller
 {
@@ -17,9 +19,9 @@ class RentalController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Customer $customer)
     {
-        //
+        return view('rentals.create', compact('customer'));
     }
 
     /**

@@ -29,8 +29,10 @@
         <input type="submit" value="削除" onclick="if(!confirm('削除しますか？')){return false;}"
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
     </form>
-    <form action="{{ route('rentals.create') }}">
-    
+
+    <form action="{{ route('customers.rentals.create'), $customer }}">
+        @csrf
+        <input type="submit" value="予約">
     </form>
 
 
