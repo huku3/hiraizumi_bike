@@ -20,6 +20,7 @@ class Customer extends Model
         'address_3',
         'tel_number',
         'email',
+        
     ];
 
     public function rentals()

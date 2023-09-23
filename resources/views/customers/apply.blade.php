@@ -2,7 +2,7 @@
 
     <div class="container lg:w-1/2 md:w-4/5 w-11/12 mx-auto mt-8 px-8 bg-white shadow-md">
         <h2 class="text-center text-lg font-bold pt-6 tracking-widest">平泉スワローツアーレンタサイクル利用申込書</h2>
-
+        <h4 class="text-center">必要事項の入力をお願いします。</h4>
         @if ($errors->any())
             <div class="bg-red-100 border-l-4 border-red-500 text-red-700 p-4 my-2" role="alert">
                 <p>
@@ -15,8 +15,7 @@
                 </ul>
             </div>
         @endif
-        <form action="/form" method="POST" enctype="multipart/form-data"
-            class="rounded pt-3 pb-8 mb-4">
+        <form action="/form" method="POST" enctype="multipart/form-data" class="rounded pt-3 pb-8 mb-4">
             @csrf
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="unit_count">
@@ -37,7 +36,7 @@
                 </label>
                 <input type="time" name="start_time"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="利用時間" value="{{ old('start_time') }}">
+                    required placeholder="利用時間" value="{{ old('start_time') }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="name">
@@ -45,7 +44,7 @@
                 </label>
                 <input type="text" name="name"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例平泉 太郎" value="{{ old('name') }}">
+                    required placeholder="例平泉 太郎" value="{{ old('name') }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="name_kana">
@@ -53,7 +52,7 @@
                 </label>
                 <input type="text" name="name_kana"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例ヒライズミ タロウ" value="{{ old('name_kana') }}">
+                    required placeholder="例ヒライズミ タロウ" value="{{ old('name_kana') }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="tel_number">
@@ -61,7 +60,7 @@
                 </label>
                 <input type="tel" name="tel_number"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="090-xxxx-xxxx" value="{{ old('tel_number') }}">
+                    required placeholder="090-xxxx-xxxx" value="{{ old('tel_number') }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="email">
@@ -69,7 +68,7 @@
                 </label>
                 <input type="email" name="email"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
-                    placeholder="例xxxxxx@yyyy.co.jp" value="{{ old('email') }}">
+                    required placeholder="例xxxxxx@yyyy.co.jp" value="{{ old('email') }}">
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="post_code">

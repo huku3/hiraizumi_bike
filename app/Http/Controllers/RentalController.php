@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreRentalRequest;
+use App\Http\Requests\UpdateRentalRequest;
 use App\Models\Customer;
 use App\Models\Bike;
+use App\Models\Rental;
 
 class RentalController extends Controller
 {
@@ -21,15 +23,32 @@ class RentalController extends Controller
      */
     public function create(Customer $customer)
     {
-        return view('rentals.create', compact('customer'));
+        $bikes = Bike::all();
+        return view('rentals.create', compact('customer'), compact('bikes'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRentalrequest $request, Customer $customer)
     {
-        //
+        // $bikeIds = [];
+        // for ($i = 1; $i <= $customer->unit_count; $i++) {
+        //     $bikeIds[] = $request->input("rental_bike_$i");
+        // }
+
+        // Rentalモデルを使用してレンタル情報を作成し、関連付けます
+        $rental = new Rental();
+        $rental->customer_id = $customer->id;
+        $rental->rental_start_time = $request->input('rental_start_time');
+        // 他のレンタル情報も設定します
+        $rental->save();
+
+        // 各自転車と関連付けます
+        $rental->bikes()->attach($bikeIds);
+
+        return redirect()->route('customers.index', $customer)
+            ->with('success', 'レンタルが申し込まれました');
     }
 
     /**
@@ -51,7 +70,7 @@ class RentalController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UpdateRentalrequest $request, string $id)
     {
         //
     }

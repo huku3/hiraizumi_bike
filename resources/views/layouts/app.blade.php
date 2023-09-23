@@ -9,7 +9,7 @@ $currentDateTime = date('Y年m月d日');
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -19,7 +19,7 @@ $currentDateTime = date('Y年m月d日');
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    
+
 </head>
 
 
@@ -31,9 +31,10 @@ $currentDateTime = date('Y年m月d日');
 
         <!-- Page Content -->
         <main>
-        <div style="text-align: center">
-        <h4>必要事項の入力をお願いします。<?= $currentDateTime ?></h4>
-        </div>
+            <div style="text-align: center">
+                <?= $currentDateTime ?>
+                {{-- <h4>必要事項の入力をお願いします。</h4> --}}
+            </div>
             {{ $slot }}
         </main>
     </div>

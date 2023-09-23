@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 | Here is where you can register web routes for your application. These
 | routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
+| be assign7ed to the "web" middleware group. Make something great!
 |
 */
 
@@ -22,6 +22,13 @@ Route::get('/', [CustomerController::class, 'index'])
     ->name('root')
     ->middleware('auth');
 
+// Route::post('customers/{customer}/rentals/c', [CustomerController::class, 'rentbike'])
+//     ->name('rental')
+//     ->middleware('auth');
+
+
+Route::resource('customers.rentals', RentalController::class)
+    ->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -34,28 +41,37 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('customers', CustomerController::class)
-    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
 Route::resource('customers', CustomerController::class)
-    ->only(['create', 'store','']);
+    ->only(['create', 'store',]);
 
 Route::get('/info', function () {
     return view('customers.info');
 });
 
 
-Route::post('/apply', [CustomerController::class,'apply']);
-    // return view('customers.apply');
+Route::post('/apply', [CustomerController::class, 'apply']);
+// return view('customers.apply');
 
-Route::post('/form', [CustomerController::class,'form']);
+Route::post('/form', [CustomerController::class, 'form']);
 
-Route::resource('customers.rentals',RentalController::class)
-    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
+Route::resource('customers.rentals', RentalController::class)
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
 
-Route::resource('bikes.rentals',RentalController::class)
-    ->only(['index','create', 'store', 'show', 'edit', 'update', 'destroy'])
+Route::resource('bikes.rentals', RentalController::class)
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
+
+Route::resource('bikes', BikeController::class)
+    ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
+    ->middleware('auth');
+
+
+
+
+
 
 require __DIR__ . '/auth.php';

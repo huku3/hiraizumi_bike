@@ -13,11 +13,17 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('rental_time');
-            $table->integer('rental_fee');
+            $table->string('rental_bike_1');
+            $table->string('rental_bike_2');
+            $table->string('rental_bike_3');
+            $table->string('rental_bike_4');
+            $table->string('rental_bike_5');
+            $table->string('rental_fee_1');
+            $table->string('rental_fee_2');
+            $table->string('rental_fee_3');
+            $table->string('rental_fee_4');
+            $table->string('rental_fee_5');
             $table->string('rental_start_time');
-            $table->string('rental_end_time');
-            $table->string('status');
             $table->foreignId('customer_id')
                 ->constrained()
                 ->cascadeOnUpdate()
@@ -26,7 +32,6 @@ return new class extends Migration
                 ->constrained()
                 ->cascadeOnUpdate()
                 ->cascadeOnDelete();
-
             $table->timestamps();
         });
     }

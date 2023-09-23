@@ -11,7 +11,7 @@
 <body>
     <a href="/">戻る</a>
 
-    <h1>{{ $customer->name }}</h1>
+    <h1>{{ $customer->name }}さん</h1>
     <p>{{ $customer->name_kana }}</p>
     <p>利用台数{{ $customer->unit_count }}</p>
     <p>利用開始時間{{ $customer->start_time }}</p>
@@ -30,9 +30,10 @@
             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
     </form>
 
-    <form action="{{ route('customers.rentals.create'), $customer }}">
+    <form action="{{ route('customers.rentals.create', $customer) }}">
+    {{-- <form action="{{ route('bikes.create') }}"> --}}
         @csrf
-        <input type="submit" value="予約">
+        <input type="submit" value="予約する">
     </form>
 
 
