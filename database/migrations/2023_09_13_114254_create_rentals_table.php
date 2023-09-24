@@ -13,17 +13,8 @@ return new class extends Migration
     {
         Schema::create('rentals', function (Blueprint $table) {
             $table->id();
-            $table->string('rental_bike_1');
-            $table->string('rental_bike_2');
-            $table->string('rental_bike_3');
-            $table->string('rental_bike_4');
-            $table->string('rental_bike_5');
-            $table->string('rental_fee_1');
-            $table->string('rental_fee_2');
-            $table->string('rental_fee_3');
-            $table->string('rental_fee_4');
-            $table->string('rental_fee_5');
-            $table->string('rental_start_time');
+            $table->string('course');
+            $table->string('start_time');
             $table->foreignId('customer_id')
                 ->constrained()
                 ->cascadeOnUpdate()

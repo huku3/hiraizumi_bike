@@ -25,11 +25,11 @@
                 </label>
                 <select name="unit_count"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3">
-                    <option value="1台" {{ old('unit_count') == '1' ? 'selected' : '' }}>1台</option>
-                    <option value="2台" {{ old('unit_count') == '2' ? 'selected' : '' }}>2台</option>
-                    <option value="3台" {{ old('unit_count') == '3' ? 'selected' : '' }}>3台</option>
-                    <option value="4台" {{ old('unit_count') == '4' ? 'selected' : '' }}>4台</option>
-                    <option value="5台" {{ old('unit_count') == '5' ? 'selected' : '' }}>5台</option>
+                    <option value="1" {{ intval(old('unit_count')) === 1 ? 'selected' : '' }}>1台</option>
+                    <option value="2" {{ intval(old('unit_count')) === 2 ? 'selected' : '' }}>2台</option>
+                    <option value="3" {{ intval(old('unit_count')) === 3 ? 'selected' : '' }}>3台</option>
+                    <option value="4" {{ intval(old('unit_count')) === 4 ? 'selected' : '' }}>4台</option>
+                    <option value="5" {{ intval(old('unit_count')) === 5 ? 'selected' : '' }}>5台</option>
                 </select>
             </div>
             <div class="mb-4">

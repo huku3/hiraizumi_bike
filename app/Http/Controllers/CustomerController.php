@@ -91,28 +91,28 @@ class CustomerController extends Controller
             ->with('notice', '削除しました');
     }
 
-    public function rentbike(Request $request, StoreCustomerRequest $customer)
-    {
+    // public function rentbike(Request $request, StoreCustomerRequest $customer)
+    // {
         
 
-        $bikeIds = [];
-        for ($i = 1; $i <= $customer->unit_count; $i++) {
-            $bikeIds[] = $request->input("rental_bike_$i");
-        }
+    //     $bikeIds = [];
+    //     for ($i = 1; $i <= $customer->unit_count; $i++) {
+    //         $bikeIds[] = $request->input("rental_bike_$i");
+    //     }
 
-        // Rentalモデルを使用してレンタル情報を作成し、関連付けます
-        $rental = new Rental();
-        $rental->customer_id = $customer->id;
-        $rental->start_time = $request->input('rental_start_time');
-        // 他のレンタル情報も設定します
-        $rental->save();
+    //     // Rentalモデルを使用してレンタル情報を作成し、関連付けます
+    //     $rental = new Rental();
+    //     $rental->customer_id = $customer->id;
+    //     $rental->start_time = $request->input('rental_start_time');
+    //     // 他のレンタル情報も設定します
+    //     $rental->save();
 
-        // 各自転車と関連付けます
-        $rental->bikes()->attach($bikeIds);
+    //     // 各自転車と関連付けます
+    //     $rental->bikes()->attach($bikeIds);
 
-        return redirect()->route('customers.index', $customer)
-            ->with('success', 'レンタルが申し込まれました');
-    }
+    //     return redirect()->route('customers.index', $customer)
+    //         ->with('success', 'レンタルが申し込まれました');
+    // }
 
     // return redirect("customers.index", compact($rental,),compact($bike),compact($customer,));
 

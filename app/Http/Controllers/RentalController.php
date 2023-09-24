@@ -30,27 +30,45 @@ class RentalController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRentalrequest $request, Customer $customer)
+    public function store(StoreRentalRequest $request, Customer $customer, Bike $bike)
     {
-        // $bikeIds = [];
-        // for ($i = 1; $i <= $customer->unit_count; $i++) {
-        //     $bikeIds[] = $request->input("rental_bike_$i");
-        // }
+        $bike_ids = $request->bike_ids;
+        $courses = $request->courses;
+        $total_price = 0;
 
-        // Rentalモデルを使用してレンタル情報を作成し、関連付けます
-        $rental = new Rental();
-        $rental->customer_id = $customer->id;
-        $rental->rental_start_time = $request->input('rental_start_time');
-        // 他のレンタル情報も設定します
-        $rental->save();
+        for ($i = 0; $i < $customer->unit_count; $i++) {
+            $rental = new Rental($request->all());
+            $rental->customer_id = $customer->id;
+            $rental->bike_id = $bike_ids[$i];
+            $rental->course = $courses[$i];
+            $rental->start_time = $request->start_time;
+            $rental->save();
 
-        // 各自転車と関連付けます
-        $rental->bikes()->attach($bikeIds);
+            // コースに応じて料金を計算し、合計金額に加算
+            $price = $this->calculatePrice($courses[$i]);
+            $total_price += $price;
+        }
 
-        return redirect()->route('customers.index', $customer)
+        // 顧客モデルに合計金額を保存
+        $customer->price = $total_price;
+        $customer->save();
+
+        return redirect()->route('customers.index')
             ->with('success', 'レンタルが申し込まれました');
     }
 
+    private function calculatePrice($course)
+    {
+        // unit_countに応じて料金を計算し、priceを返す
+        if ($course == "半日コース") {
+            return 900;
+        } elseif ($course == "1日コース") {
+            return 1200;
+        }
+
+        // デフォルトの価格
+        return 0;
+    }
     /**
      * Display the specified resource.
      */

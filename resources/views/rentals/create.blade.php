@@ -13,10 +13,10 @@
                         <legend>自転車選択:</legend>
                         @for ($i = 1; $i <= $customer->unit_count; $i++)
                             <div class="mb-4">
-                                <label for="rental_bike_{{ $i }}">自転車 {{ $i }}台目</label>
-                                <select id="rental_bike_{{ $i }}" name="rental_bike_{{ $i }}">
+                                <label for="bike_ids">自転車 {{ $i }}台目</label>
+                                <select id="bike_id_{{ $i }}" name="bike_ids[]">
                                     @foreach ($bikes as $bike)
-                                        <option value="{{ $bike->type }}">{{ $bike->type }}</option>
+                                        <option value="{{ $bike->id }}">{{ $bike->type }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -30,10 +30,10 @@
             </div>
             @for ($i = 1; $i <= $customer->unit_count; $i++)
                 <div class="mb-4">
-                    <label class="block text-gray-700 text-sm mb-2" for="rental_fee_{{ $i }}">
+                    <label class="block text-gray-700 text-sm mb-2" for="course_{{ $i }}">
                         レンタルコース (自転車 {{ $i }}台目)
                     </label>
-                    <select name="rental_fee_{{ $i }}" id="rental_fee_{{ $i }}">
+                    <select name="courses[]" id="course_{{ $i }}">
                         <option value="半日コース">半日コース</option>
                         <option value="1日コース">1日コース</option>
                     </select>
@@ -43,7 +43,7 @@
                 <label class="block text-gray-700 text-sm mb-2" for="start_time">
                     レンタル開始時間
                 </label>
-                <input type="time" name="rental_start_time"
+                <input type="time" name="start_time"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     placeholder="利用時間" value="{{ old('rental_start_time') }}">
             </div>

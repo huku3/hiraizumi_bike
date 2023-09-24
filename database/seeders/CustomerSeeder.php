@@ -15,7 +15,7 @@ class CustomerSeeder extends Seeder
     {
         $param = [
             [
-                'unit_count' => 1,
+                'unit_count' => 5,
                 'start_time' => '2023:9:13',
                 'name' => 'Test',
                 'name_kana' => 'テスト',

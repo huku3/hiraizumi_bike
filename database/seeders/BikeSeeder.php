@@ -13,15 +13,13 @@ class BikeSeeder extends Seeder
      */
     public function run(): void
     {
-        $param=[];
-        for ($i=0; $i <50 ; $i++) { 
-            $param[] = ['type' => '一般'];
-            $param[] = ['type' => '電動'];
-
+        $param = [];
+        for ($i = 1; $i <= 50; $i++) {
+            $param[] = ['type' => '一般' . "({$i})"];
+            $param[] = ['type' => '電動' . "({$i})"];
         }
 
 
         DB::table('bikes')->insert($param);
     }
 }
-

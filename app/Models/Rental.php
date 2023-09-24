@@ -10,16 +10,7 @@ class Rental extends Model
     use HasFactory;
 
     protected $fillable = [
-        'rental_bike_1',
-        'rental_bike_2',
-        'rental_bike_3',
-        'rental_bike_4',
-        'rental_bike_5',
-        'rental_fee_1',
-        'rental_fee_2',
-        'rental_fee_3',
-        'rental_fee_4',
-        'rental_fee_5',
+        'course',
         'rental_start_time',
     ];
 

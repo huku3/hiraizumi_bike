@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('customers', function (Blueprint $table) {
             $table->id();
-            $table->string('unit_count');
+            $table->integer('unit_count');
             $table->string('start_time');
             $table->string('name');
             $table->string('name_kana');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address_3');
             $table->string('tel_number');
             $table->string('email');
+            $table->integer('price')->default(0);
             $table->timestamps();
         });
     }

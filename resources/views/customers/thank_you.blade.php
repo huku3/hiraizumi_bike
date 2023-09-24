@@ -13,7 +13,7 @@
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold text-gray-800 mb-6">お申し込み完了</h1>
         <h2 class="text-2xl text-gray-700 mb-2">{{ $customer->name }}様、お申込みありがとうございます</h2>
-        <p class="text-lg text-gray-600 mb-2">{{ $customer->start_time }}分でご利用開始ですね。</p>
+        <p class="text-lg text-gray-600 mb-2">{{ $customer->start_time }}分でご利用希望ですね。</p>
         <p class="text-lg text-gray-600 mb-6">店舗スタッフにこちらの画面をご提示頂くとスムーズにご案内出来ますのでご協力お願い致します。</p>
         <p class="text-lg text-gray-600 mb-6">電動自転車のご利用が初めての場合は、以下のYouTube動画をご覧ください。</p>
         <div class="video-container">

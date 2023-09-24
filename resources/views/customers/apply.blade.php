@@ -23,16 +23,16 @@
                 </label>
                 <select name="unit_count"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3">
-                    <option value="1台" {{ old('unit_count') == '1' ? 'selected' : '' }}>1台</option>
-                    <option value="2台" {{ old('unit_count') == '2' ? 'selected' : '' }}>2台</option>
-                    <option value="3台" {{ old('unit_count') == '3' ? 'selected' : '' }}>3台</option>
-                    <option value="4台" {{ old('unit_count') == '4' ? 'selected' : '' }}>4台</option>
-                    <option value="5台" {{ old('unit_count') == '5' ? 'selected' : '' }}>5台</option>
+                    <option value="1" {{ intval(old('unit_count')) === 1 ? 'selected' : '' }}>1台</option>
+                    <option value="2" {{ intval(old('unit_count')) === 2 ? 'selected' : '' }}>2台</option>
+                    <option value="3" {{ intval(old('unit_count')) === 3 ? 'selected' : '' }}>3台</option>
+                    <option value="4" {{ intval(old('unit_count')) === 4 ? 'selected' : '' }}>4台</option>
+                    <option value="5" {{ intval(old('unit_count')) === 5 ? 'selected' : '' }}>5台</option>
                 </select>
             </div>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="start_time">
-                    利用開始時間
+                    希望の利用開始時間
                 </label>
                 <input type="time" name="start_time"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
@@ -58,10 +58,35 @@
                 <label class="block text-gray-700 text-sm mb-2" for="tel_number">
                     電話番号
                 </label>
-                <input type="tel" name="tel_number"
+                <input type="tel" name="tel_number" id="tel_number"
                     class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full py-2 px-3"
                     required placeholder="090-xxxx-xxxx" value="{{ old('tel_number') }}">
             </div>
+
+            <script>
+                // 電話番号フィールドに自動的にハイフンを追加する関数
+                function formatPhoneNumber() {
+                    var input = document.getElementById("tel_number");
+                    var value = input.value.replace(/\D/g, ''); // 数字以外の文字を削除
+                    var formattedValue = '';
+
+                    if (value.length >= 4) {
+                        formattedValue += value.substring(0, 3) + '-';
+                        value = value.substring(3);
+                    }
+
+                    if (value.length >= 7) {
+                        formattedValue += value.substring(0, 4) + '-';
+                        value = value.substring(4);
+                    }
+
+                    formattedValue += value;
+                    input.value = formattedValue;
+                }
+
+                // 電話番号フィールドの入力時に自動的にハイフンを追加する
+                document.getElementById("tel_number").addEventListener("input", formatPhoneNumber);
+            </script>
             <div class="mb-4">
                 <label class="block text-gray-700 text-sm mb-2" for="email">
                     メールアドレス

@@ -22,11 +22,6 @@ Route::get('/', [CustomerController::class, 'index'])
     ->name('root')
     ->middleware('auth');
 
-// Route::post('customers/{customer}/rentals/c', [CustomerController::class, 'rentbike'])
-//     ->name('rental')
-//     ->middleware('auth');
-
-
 Route::resource('customers.rentals', RentalController::class)
     ->middleware('auth');
 
@@ -68,10 +63,5 @@ Route::resource('bikes.rentals', RentalController::class)
 Route::resource('bikes', BikeController::class)
     ->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy'])
     ->middleware('auth');
-
-
-
-
-
 
 require __DIR__ . '/auth.php';
